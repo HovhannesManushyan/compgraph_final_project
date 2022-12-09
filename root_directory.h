@@ -1,0 +1,1 @@
+const char * logl_root = "/home/john/Desktop/compgraph";
