@@ -189,7 +189,7 @@ int main()
             int cnt;
             infile>>cnt;
             if(cnt==1){
-                cubePositions.push_back(glm::vec3( -2+4.0f*j/500.0f,  -2.5+4.0f*i/500.0f,  0.5f));
+                cubePositions.push_back(glm::vec3( -10+20.0f*j/500.0f,  -5+10.0f*i/500.0f,  0.5f));
             }
         }
     }
