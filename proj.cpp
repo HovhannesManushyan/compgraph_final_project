@@ -47,8 +47,8 @@ std::vector<float> gen_plane(int k){
             results.push_back(0.0f);
             results.push_back(0.0f);
             results.push_back(1.0f);
-            results.push_back(0.0f);
-            results.push_back(0.5f);
+            results.push_back(-1+0.5f*i);
+            results.push_back(-1+0.5f*j);
 
         }
     }
@@ -56,6 +56,26 @@ std::vector<float> gen_plane(int k){
     return results;
 
 }
+
+std::vector<int> gen_plane_indices(int k){
+
+    std::vector<int> results = {};
+
+    for(int i = 0; i < k; ++i){
+        results.push_back(i);
+        for(int j = 0; j < k-1; j++){
+            results.push_back(i+j*k+1);
+            results.push_back(i+j*k+k);
+        }
+        results.push_back(i+(k-2)*k+k+1);
+        results.push_back(i+(k-2)*k+k+1);
+        results.push_back(i+1);
+    }
+
+    return results;
+
+}
+
 
 
 int main()
@@ -120,15 +140,19 @@ int main()
     // }
     // std::vector<float> vertices ={
     //     // positions          // normals           // texture coords
-    //     -1.5f, -0.5f, -0.5f,  0.0f,  0.0f, 1.0f,  0.0f,  0.0f,
+    //     -1.0f, -0.5f, -0.5f,  0.0f,  0.0f, 1.0f,  0.0f,  0.0f,
     //      0.5f, -0.5f, -0.5f,  0.0f,  0.0f, 1.0f,  1.0f,  0.0f,
     //      0.5f,  0.5f, -0.5f,  0.0f,  0.0f, 1.0f,  1.0f,  1.0f,
+    //      0.5f,  0.5f, -0.5f,  0.0f,  0.0f, 1.0f,  1.0f,  1.0f,
+        
     // };
     
 
-
-    std::vector<int> indices = {0,1,4,5,8,9,12,13,12};
-    // std::vector<int> indices = {0,1,4,5,8,9,12,13};
+    std::vector<int> indices = gen_plane_indices(k);
+    // for(auto x: test){
+    //     std::cout<<x<<" ";
+    // }
+    // std::vector<int> indices = {0,1,4,5,8,9,12,13,13,1,1,2,5,6};
     // for(int i = 0; i < k; ++i){
     //     for(int j = 0; j < k; ++j){
     //         indices.push_back(i*k+j);
